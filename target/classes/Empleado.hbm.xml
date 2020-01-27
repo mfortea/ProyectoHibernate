@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.dual.Hibernate.Empleado" table="EMPLEADO">
+
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+
+		<property name="nombre" type="java.lang.String">
+			<column name="NOMBRE" />
+		</property>
+
+		<property name="apellido" type="java.lang.String">
+			<column name="APELLIDO" />
+		</property>
+
+		<many-to-one name="id_dep" class="com.dual.Hibernate.Departamento"
+			fetch="select">
+			<column name="ID_DEP" not-null="true" />
+		</many-to-one>
+
+	</class>
+</hibernate-mapping>

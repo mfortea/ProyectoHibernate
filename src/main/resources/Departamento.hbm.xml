@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.dual.Hibernate.Departamento" table="DEPARTAMENTO">
+
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+
+		<property name="nombre" type="java.lang.String">
+			<column name="NOMBRE" />
+		</property>
+
+		<set name="empleados" table="empleados" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="ID" not-null="true" />
+			</key>
+			<one-to-many class="com.dual.Hibernate.Empleado" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>
